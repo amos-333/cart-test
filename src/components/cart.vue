@@ -5,13 +5,13 @@
             </div>
             <div class=" w-3/4 m-4 flex justify-between">
               <div class="index w-4/6 ml-1">
-                <p class="font-semibold pb-1 text-lg">strawberry chocolate cake purple</p>
+                <p class="font-semibold pb-1 text-lg">{{name}}</p>
                 <p class="text-gray-400">5 Kilograms</p>
-                <p class="text-gray-400  pb-1">Rs. 860</p>
+                <p class="text-gray-400  pb-1">Rs. {{price}}</p>
                   <div class="flex  mt-2">
-                    <button  class="border border-gray-600 mx-2 px-2 rounded-full">-</button>
-                    <p>3</p>
-                    <button class="border border-gray-600 mx-2 px-2 rounded-full">+</button>
+                    <button  class="border border-gray-600 mx-2 px-2 rounded-full" @click="$emit('increaseBy',-1)">-</button>
+                    <p>{{count}}</p>
+                    <button class="border border-gray-600 mx-2 px-2 rounded-full" @click="$emit('increaseBy',1)">+</button>
                   </div>
               </div>
               <span class=" w-1/6  relative">
@@ -23,12 +23,17 @@
 </template>
 
 <script>
-
     export default{
         name: "cartComponent",
         components:{
-
-        }
+        },
+        props:{
+          name:String,
+          count:Number,
+          price:Number
+        },
+        emits:
+          ['increaseBy']
+        
     }
-
 </script>
